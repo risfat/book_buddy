@@ -96,3 +96,13 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+targets:
+  $default:
+    main: lib/main_production.dart
+  development:
+    main: lib/main_development.dart
+  staging:
+    main: lib/main_staging.dart
+  production:
+    main: lib/main_production.dart
