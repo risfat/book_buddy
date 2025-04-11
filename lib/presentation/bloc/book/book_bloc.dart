@@ -14,102 +14,95 @@ part 'book_event.dart';
 part 'book_state.dart';
 
 class BookBloc extends Bloc<BookEvent, BookState> {
-  final GetBooks getBooks;
-  final GetFavorites getFavorites;
-  final AddToFavorites addToFavorites;
-  final RemoveFavorites removeFromFavorites;
+  final GetBooks _getBooks;
+  final GetFavorites _getFavorites;
+  final AddToFavorites _addToFavorites;
+  final RemoveFavorites _removeFromFavorites;
   static const int _booksPerPage = 10;
 
   BookBloc({
-    required this.getBooks,
-    required this.getFavorites,
-    required this.addToFavorites,
-    required this.removeFromFavorites,
-  }) : super(const BookState.initial()) {
-    on<BookEvent>((event, emit) async {
-      await event.map(
-        getBooks: (e) => _onGetBooks(e, emit),
-        loadMoreBooks: (e) => _onLoadMoreBooks(e, emit),
-        toggleFavorite: (e) => _onToggleFavorites(e, emit),
-        getFavorites: (e) => _onGetFavorites(e, emit),
-      );
-    });
+    required GetBooks getBooks,
+    required GetFavorites getFavorites,
+    required AddToFavorites addToFavorites,
+    required RemoveFavorites removeFromFavorites,
+  })  : _getBooks = getBooks,
+        _getFavorites = getFavorites,
+        _addToFavorites = addToFavorites,
+        _removeFromFavorites = removeFromFavorites,
+        super(const BookState.initial()) {
+    on<_GetBooksEvent>(_onGetBooks);
+    on<_LoadMoreBooksEvent>(_onLoadMoreBooks);
+    on<_ToggleFavoriteEvent>(_onToggleFavorites);
+    on<_GetFavoritesEvent>(_onGetFavorites);
   }
 
   Future<void> _onGetBooks(
       _GetBooksEvent event, Emitter<BookState> emit) async {
     emit(const BookState.loading());
-    final failureOrBooks = await getBooks(
+    final failureOrBooks = await _getBooks(
         PaginationParams(page: event.page, limit: _booksPerPage));
 
     if (emit.isDone) return;
 
-    failureOrBooks.fold(
-      (failure) => emit(BookState.error(message: failure.message)),
-      (books) => emit(BookState.booksLoaded(
+    emit(failureOrBooks.fold(
+      (failure) => BookState.error(message: failure.message),
+      (books) => BookState.booksLoaded(
         books: books,
         hasReachedMax: books.length < _booksPerPage,
-      )),
-    );
+      ),
+    ));
   }
 
   Future<void> _onLoadMoreBooks(
       _LoadMoreBooksEvent event, Emitter<BookState> emit) async {
     final currentState = state;
-    if (currentState is _BooksLoaded && !currentState.hasReachedMax) {
-      final nextPage = (currentState.books.length ~/ _booksPerPage) + 1;
-      final failureOrBooks = await getBooks(
-          PaginationParams(page: nextPage, limit: _booksPerPage));
+    if (currentState is! _BooksLoaded || currentState.hasReachedMax) return;
 
-      if (emit.isDone) return;
+    final nextPage = (currentState.books.length ~/ _booksPerPage) + 1;
+    final failureOrBooks =
+        await _getBooks(PaginationParams(page: nextPage, limit: _booksPerPage));
 
-      failureOrBooks.fold(
-        (failure) =>
-            emit(const BookState.error(message: 'Failed to load more books')),
-        (newBooks) => emit(BookState.booksLoaded(
-          books: [...currentState.books, ...newBooks],
-          hasReachedMax: newBooks.length < _booksPerPage,
-        )),
-      );
-    }
+    if (emit.isDone) return;
+
+    emit(failureOrBooks.fold(
+      (_) => const BookState.error(message: 'Failed to load more books'),
+      (newBooks) => BookState.booksLoaded(
+        books: [...currentState.books, ...newBooks],
+        hasReachedMax: newBooks.length < _booksPerPage,
+      ),
+    ));
   }
 
   Future<void> _onToggleFavorites(
       _ToggleFavoriteEvent event, Emitter<BookState> emit) async {
     final currentState = state;
-    if (currentState is _BooksLoaded) {
-      final updatedBooks = currentState.books.map((book) {
-        if (book.id == event.book.id) {
-          if (book.isFavorite) {
-            removeFromFavorites.call(book);
-            return book.copyWith(isFavorite: false);
-          } else {
-            addToFavorites.call(book);
-            return book.copyWith(isFavorite: true);
-          }
-        }
-        return book;
-      }).toList();
+    if (currentState is! _BooksLoaded) return;
 
-      emit(BookState.booksLoaded(
-        books: updatedBooks,
-        hasReachedMax: currentState.hasReachedMax,
-      ));
-    }
+    final updatedBooks = currentState.books.map((book) {
+      if (book.id == event.book.id) {
+        final isFavorite = !book.isFavorite;
+        isFavorite ? _addToFavorites(book) : _removeFromFavorites(book);
+        return book.copyWith(isFavorite: isFavorite);
+      }
+      return book;
+    }).toList();
+
+    emit(BookState.booksLoaded(
+      books: updatedBooks,
+      hasReachedMax: currentState.hasReachedMax,
+    ));
   }
 
   Future<void> _onGetFavorites(
       _GetFavoritesEvent event, Emitter<BookState> emit) async {
     emit(const BookState.loading());
-    final failureOrFavorites = await getFavorites.call(NoParams());
+    final failureOrFavorites = await _getFavorites(NoParams());
 
     if (emit.isDone) return;
 
-    failureOrFavorites.fold(
-      (failure) => emit(BookState.error(message: failure.message)),
-      (favorites) => emit(BookState.favoriteBooksLoaded(
-        books: favorites
-      )),
-    );
+    emit(failureOrFavorites.fold(
+      (failure) => BookState.error(message: failure.message),
+      (favorites) => BookState.favoriteBooksLoaded(books: favorites),
+    ));
   }
 }
