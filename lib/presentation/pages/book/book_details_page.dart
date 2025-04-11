@@ -1,3 +1,4 @@
+import 'package:book_buddy/core/utilities/toast.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -20,11 +21,16 @@ class BookDetailsPage extends StatelessWidget {
           _buildSliverAppBar(context),
           SliverToBoxAdapter(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
               child: Animate(
                 effects: [
                   FadeEffect(duration: 600.ms, curve: Curves.easeOut),
-                  SlideEffect(begin: const Offset(0, 0.1), end: Offset.zero, duration: 600.ms, curve: Curves.easeOut),
+                  SlideEffect(
+                      begin: const Offset(0, 0.1),
+                      end: Offset.zero,
+                      duration: 600.ms,
+                      curve: Curves.easeOut),
                 ],
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -95,7 +101,8 @@ class BookDetailsPage extends StatelessWidget {
                 ),
                 errorWidget: (context, error, stackTrace) => Container(
                   color: Colors.grey[300],
-                  child: const Icon(Icons.book, size: 100, color: Colors.white54),
+                  child:
+                      const Icon(Icons.book, size: 100, color: Colors.white54),
                 ),
               ),
             ),
@@ -122,9 +129,9 @@ class BookDetailsPage extends StatelessWidget {
     return Text(
       'by ${book.authors.join(", ")}',
       style: Theme.of(context).textTheme.titleMedium?.copyWith(
-        color: Colors.grey[700],
-        fontStyle: FontStyle.italic,
-      ),
+            color: Colors.grey[700],
+            fontStyle: FontStyle.italic,
+          ),
     );
   }
 
@@ -155,9 +162,9 @@ class BookDetailsPage extends StatelessWidget {
             Text(
               '${book.averageRating?.toStringAsFixed(1) ?? 'N/A'} (${book.ratingsCount ?? 0})',
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-                color: Colors.grey[700],
-              ),
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey[700],
+                  ),
             ),
           ],
         ),
@@ -174,9 +181,9 @@ class BookDetailsPage extends StatelessWidget {
         child: Text(
           book.description,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-            height: 1.6,
-            color: Colors.grey[800],
-          ),
+                height: 1.6,
+                color: Colors.grey[800],
+              ),
         ),
       ),
     );
@@ -191,8 +198,10 @@ class BookDetailsPage extends StatelessWidget {
         child: Column(
           children: [
             _buildInfoRow('Publisher', book.publisher ?? 'Unknown'),
-            _buildInfoRow('Published Date', book.firstPublishYear?.toString() ?? 'Unknown'),
-            _buildInfoRow('Page Count', book.pageCount?.toString() ?? 'Unknown'),
+            _buildInfoRow('Published Date',
+                book.firstPublishYear?.toString() ?? 'Unknown'),
+            _buildInfoRow(
+                'Page Count', book.pageCount?.toString() ?? 'Unknown'),
             _buildInfoRow('Categories', book.categories.join(', ')),
           ],
         ),
@@ -203,26 +212,28 @@ class BookDetailsPage extends StatelessWidget {
   Widget _buildActionButtons(BuildContext context) {
     return Row(
       children: [
-        Expanded(
-          child: CustomElevatedButton(
-            onTap: () {
-              // TODO: Implement add to favorite functionality
-            },
-            child: const Text(
-              'Add to Favorite',
-              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-            ),
-          ),
-        ),
-        const SizedBox(width: 16),
+        // Expanded(
+        //   child: CustomElevatedButton(
+        //     onTap: () {
+        //       // TODO: Implement add to favorite functionality
+        //     },
+        //     child: const Text(
+        //       'Add to Favorite',
+        //       style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        //     ),
+        //   ),
+        // ),
+        // const SizedBox(width: 16),
         Expanded(
           child: CustomElevatedButton(
             onTap: () {
               // TODO: Implement preview functionality
+              showToast(msg: "Feature not implemented yet!");
             },
             child: const Text(
               'Preview',
-              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              style:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
             ),
           ),
         ),
@@ -236,9 +247,9 @@ class BookDetailsPage extends StatelessWidget {
       child: Text(
         title,
         style: Theme.of(context).textTheme.titleLarge?.copyWith(
-          fontWeight: FontWeight.bold,
-          color: Theme.of(context).primaryColor,
-        ),
+              fontWeight: FontWeight.bold,
+              color: Theme.of(context).primaryColor,
+            ),
       ),
     );
   }
@@ -253,7 +264,8 @@ class BookDetailsPage extends StatelessWidget {
             width: 120,
             child: Text(
               '$label:',
-              style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.grey),
+              style: const TextStyle(
+                  fontWeight: FontWeight.bold, color: Colors.grey),
             ),
           ),
           Expanded(
