@@ -53,21 +53,24 @@ class BookListItem extends StatelessWidget {
   }
 
   Widget _buildCoverImage() {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(8),
-      child: Image.network(
-        book.coverImageUrl,
-        width: 80,
-        height: 120,
-        fit: BoxFit.cover,
-        errorBuilder: (context, error, stackTrace) {
-          return Container(
-            width: 80,
-            height: 120,
-            color: Colors.grey[300],
-            child: const Icon(Icons.book, color: Colors.grey),
-          );
-        },
+    return Hero(
+      tag: 'book-cover-${book.id}',
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(8),
+        child: Image.network(
+          book.coverImageUrl,
+          width: 80,
+          height: 120,
+          fit: BoxFit.cover,
+          errorBuilder: (context, error, stackTrace) {
+            return Container(
+              width: 80,
+              height: 120,
+              color: Colors.grey[300],
+              child: const Icon(Icons.book, color: Colors.grey),
+            );
+          },
+        ),
       ),
     );
   }

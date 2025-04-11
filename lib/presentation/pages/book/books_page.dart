@@ -6,6 +6,7 @@ import '../../../domain/entities/book.dart';
 import '../../bloc/book/book_bloc.dart';
 import '../../widgets/custom_error_widget.dart';
 import 'widgets/book_list_item.dart';
+import 'book_details_page.dart';
 
 class BooksPage extends StatelessWidget {
   const BooksPage({Key? key}) : super(key: key);
@@ -194,10 +195,9 @@ class BooksPage extends StatelessWidget {
   }
 
   void _navigateToBookDetails(BuildContext context, Book book) {
-    // TODO: Implement navigation to book details page
-    // Navigator.push(
-    //   context,
-    //   MaterialPageRoute(builder: (context) => BookDetailsPage(book: book)),
-    // );
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => BookDetailsPage(book: book)),
+    );
   }
 }

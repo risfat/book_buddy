@@ -6,6 +6,13 @@ class BookModel extends Book {
     required super.title,
     required super.authors,
     required super.coverImageUrl,
+    required super.description,
+    required super.firstPublishYear,
+    required super.publisher,
+    required super.pageCount,
+    required super.categories,
+    required super.averageRating,
+    required super.ratingsCount,
   });
 
   factory BookModel.fromGoogleBooksJson(Map<String, dynamic> json) {
@@ -20,6 +27,16 @@ class BookModel extends Book {
       coverImageUrl: (volumeInfo['imageLinks']
               as Map<String, dynamic>?)?['thumbnail'] as String? ??
           '',
+      description: volumeInfo['description'] as String? ?? '',
+      firstPublishYear: volumeInfo['publishedDate'] ?? 'Not Available',
+      publisher: volumeInfo['publisher'] as String? ?? '',
+      pageCount: volumeInfo['pageCount'] as int? ?? 0,
+      categories: (volumeInfo['categories'] as List<dynamic>?)
+              ?.map((category) => category as String)
+              .toList() ??
+          [],
+      averageRating: (volumeInfo['averageRating'] as num?)?.toDouble() ?? 0.0,
+      ratingsCount: volumeInfo['ratingsCount'] as int? ?? 0,
     );
   }
 
@@ -29,6 +46,13 @@ class BookModel extends Book {
       'volumeInfo': {
         'title': title,
         'authors': authors,
+        'description': description,
+        'publishedDate': firstPublishYear,
+        'publisher': publisher,
+        'pageCount': pageCount,
+        'categories': categories,
+        'averageRating': averageRating,
+        'ratingsCount': ratingsCount,
         'imageLinks': {
           'thumbnail': coverImageUrl,
         },

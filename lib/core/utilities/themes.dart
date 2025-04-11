@@ -44,9 +44,14 @@ ThemeData themeLight(BuildContext context) {
         fontSize: 16,
         fontWeight: FontWeight.w500,
       ),
+      headlineLarge: GoogleFonts.poppins(
+        color: ColorLight.fontTitle,
+        fontSize: 25,
+        fontWeight: FontWeight.w500,
+      ),
       headlineMedium: GoogleFonts.poppins(
         color: ColorLight.fontTitle,
-        fontSize: 14,
+        fontSize: 20,
         fontWeight: FontWeight.w500,
       ),
       headlineSmall: GoogleFonts.poppins(
