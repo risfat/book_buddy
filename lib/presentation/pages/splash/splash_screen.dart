@@ -55,7 +55,7 @@ class _SplashScreenState extends State<SplashScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Icon(
-                  Icons.flutter_dash,
+                  Icons.book,
                   size: 100,
                   color: Colors.white,
                 )
