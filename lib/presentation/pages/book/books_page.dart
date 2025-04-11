@@ -19,15 +19,17 @@ class _BooksPageState extends State<BooksPage> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    if (_selectedIndex != index) {
+      setState(() {
+        _selectedIndex = index;
+      });
 
-    context.read<BookBloc>().add(
-          index == 1
-              ? const BookEvent.getFavorites()
-              : const BookEvent.getBooks(page: 1),
-        );
+      context.read<BookBloc>().add(
+            index == 1
+                ? const BookEvent.getFavorites()
+                : const BookEvent.getBooks(page: 1),
+          );
+    }
   }
 
   @override
