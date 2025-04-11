@@ -71,9 +71,9 @@ void setupSynchronousRegistrations() {
 
 Future<void> setupAsynchronousRegistrations() async {
   // Open Hive box
-  final userBox = await Hive.openBox<String>(HiveBox.bookBox);
+  final bookBox = await Hive.openBox<String>(HiveBox.bookBox);
   final configBox = await Hive.openBox(HiveBox.configBox);
   // Register box in GetIt
-  getIt.registerLazySingleton<Box<String>>(() => userBox);
+  getIt.registerLazySingleton<Box<String>>(() => bookBox);
   getIt.registerLazySingleton<Box>(() => configBox);
 }

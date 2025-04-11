@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class Screens {
-  static double heigth(BuildContext context) {
+  static double height(BuildContext context) {
     return MediaQuery.of(context).size.height;
   }
 
@@ -51,7 +51,7 @@ class Screens {
 
   static double logoSize(BuildContext context) {
     if (Screens.isPortrait(context)) {
-      return Screens.heigth(context) * 0.05;
+      return Screens.height(context) * 0.05;
     } else {
       return Screens.width(context) * 0.05;
     }

@@ -12,10 +12,6 @@ class DioClient {
 
   static Dio _createDioInstance() {
     final dio = Dio();
-    // final tokenService = TokenService(dio);
-    //
-    // // Add AuthInterceptor
-    // dio.interceptors.add(AuthInterceptor(tokenService));
 
     // Add DioLoggingInterceptor
     dio.interceptors.add(DioLoggingInterceptor());

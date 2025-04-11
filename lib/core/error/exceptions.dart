@@ -13,20 +13,6 @@ class CacheException implements Exception {
   final String message;
 }
 
-class UserNotFoundException implements Exception {
-  final String message;
-  UserNotFoundException([this.message = 'User does not exist']);
-
-  @override
-  String toString() => message;
-}
-
-class AccountNotCreatedException implements Exception {
-  final String message;
-  AccountNotCreatedException(
-      [this.message = 'Account not created. Please try again later.']);
-}
-
 class BadRequestException implements Exception {
   final String message;
   BadRequestException(this.message);

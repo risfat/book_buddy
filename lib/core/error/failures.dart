@@ -28,10 +28,6 @@ class NoDataFailure extends Failure {
   const NoDataFailure(super.message);
 }
 
-class UserNotFoundFailure extends Failure {
-  const UserNotFoundFailure(super.message);
-}
-
 class BadRequestFailure extends Failure {
   const BadRequestFailure(super.message);
 }

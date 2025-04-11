@@ -7,10 +7,6 @@ class AppRoutes {
   static const String splashRouteName = 'splash';
   static const String splashRoutePath = '/';
 
-  /// Main route
-  static const String mainPageRouteName = 'main';
-  static const String mainPageRoutePath = '/main';
-
   /// Books route
   static const String booksRouteName = 'books';
   static const String booksRoutePath = '/books';
