@@ -5,30 +5,64 @@ import 'package:shimmer/shimmer.dart';
 import '../../../domain/entities/book.dart';
 import '../../bloc/book/book_bloc.dart';
 import '../../widgets/custom_error_widget.dart';
-import 'widgets/book_list_item.dart';
 import 'book_details_page.dart';
+import 'widgets/book_list_item.dart';
 
-class BooksPage extends StatelessWidget {
-  const BooksPage({Key? key}) : super(key: key);
+class BooksPage extends StatefulWidget {
+  const BooksPage({super.key});
+
+  @override
+  State<BooksPage> createState() => _BooksPageState();
+}
+
+class _BooksPageState extends State<BooksPage> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+
+    // Dispatch getFavorites event when Favorites tab is selected
+    if (index == 1) {
+      context.read<BookBloc>().add(const BookEvent.getFavorites());
+    } else {
+      context.read<BookBloc>().add(const BookEvent.getBooks(page: 1));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildAppBar(),
       body: _buildBody(),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.book),
+            label: 'Books',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite),
+            label: 'Favorites',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+      ),
     );
   }
 
   AppBar _buildAppBar() {
     return AppBar(
-      title: const Text('Books'),
+      title: Text(_selectedIndex == 0 ? 'Books' : 'Favorites'),
       actions: [
-        IconButton(
-          icon: const Icon(Icons.search),
-          onPressed: () {
-            // TODO: Implement search functionality
-          },
-        ),
+        // IconButton(
+        //   icon: const Icon(Icons.search),
+        //   onPressed: () {
+        //     // TODO: Implement search functionality
+        //   },
+        // ),
       ],
     );
   }
@@ -39,8 +73,10 @@ class BooksPage extends StatelessWidget {
         return state.when(
           initial: () => _handleInitialState(context),
           loading: () => _buildShimmerLoading(),
-          loaded: (books, hasReachedMax) =>
+          booksLoaded: (books, hasReachedMax) =>
               _buildBookList(context, books, hasReachedMax),
+          favoriteBooksLoaded: (books) =>
+              _buildBookList(context, books, true, pullToRefresh: false),
           error: (message) => CustomErrorWidget(errorMessage: message),
         );
       },
@@ -60,7 +96,8 @@ class BooksPage extends StatelessWidget {
           baseColor: Colors.grey[300]!,
           highlightColor: Colors.grey[100]!,
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+            padding:
+                const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -109,10 +146,13 @@ class BooksPage extends StatelessWidget {
   }
 
   Widget _buildBookList(
-      BuildContext context, List<Book> books, bool hasReachedMax) {
+      BuildContext context, List<Book> books, bool hasReachedMax,
+      {bool pullToRefresh = true}) {
     return RefreshIndicator(
       onRefresh: () async {
-        context.read<BookBloc>().add(const BookEvent.getBooks(page: 1));
+        if (pullToRefresh) {
+          context.read<BookBloc>().add(const BookEvent.getBooks(page: 1));
+        }
       },
       child: NotificationListener<ScrollNotification>(
         onNotification: (ScrollNotification scrollInfo) {
@@ -130,6 +170,11 @@ class BooksPage extends StatelessWidget {
             return BookListItem(
               book: books[index],
               onTap: () => _navigateToBookDetails(context, books[index]),
+              onFavoriteToggle: () {
+                context.read<BookBloc>().add(
+                      BookEvent.toggleFavorite(books[index]),
+                    );
+              },
             );
           },
         ),

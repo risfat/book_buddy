@@ -13,6 +13,7 @@ class BookModel extends Book {
     required super.categories,
     required super.averageRating,
     required super.ratingsCount,
+    required super.isFavorite,
   });
 
   factory BookModel.fromGoogleBooksJson(Map<String, dynamic> json) {
@@ -37,6 +38,7 @@ class BookModel extends Book {
           [],
       averageRating: (volumeInfo['averageRating'] as num?)?.toDouble() ?? 0.0,
       ratingsCount: volumeInfo['ratingsCount'] as int? ?? 0,
+      isFavorite: false, // Assume default value for now
     );
   }
 
@@ -56,7 +58,44 @@ class BookModel extends Book {
         'imageLinks': {
           'thumbnail': coverImageUrl,
         },
+        'isFavorite': isFavorite,
       },
     };
+  }
+
+  // Converter method: Book to BookModel
+  factory BookModel.fromBook(Book book) {
+    return BookModel(
+      id: book.id,
+      title: book.title,
+      authors: book.authors,
+      coverImageUrl: book.coverImageUrl,
+      description: book.description,
+      firstPublishYear: book.firstPublishYear,
+      publisher: book.publisher,
+      pageCount: book.pageCount,
+      categories: book.categories,
+      averageRating: book.averageRating,
+      ratingsCount: book.ratingsCount,
+      isFavorite: book.isFavorite,
+    );
+  }
+
+  // Converter method: BookModel to Book
+  Book toBook() {
+    return Book(
+      id: id,
+      title: title,
+      authors: authors,
+      coverImageUrl: coverImageUrl,
+      description: description,
+      firstPublishYear: firstPublishYear,
+      publisher: publisher,
+      pageCount: pageCount,
+      categories: categories,
+      averageRating: averageRating,
+      ratingsCount: ratingsCount,
+      isFavorite: isFavorite,
+    );
   }
 }

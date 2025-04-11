@@ -5,11 +5,13 @@ import '../../../../domain/entities/book.dart';
 class BookListItem extends StatelessWidget {
   final Book book;
   final VoidCallback onTap;
+  final VoidCallback onFavoriteToggle;
 
   const BookListItem({
     super.key,
     required this.book,
     required this.onTap,
+    required this.onFavoriteToggle,
   });
 
   @override
@@ -43,6 +45,15 @@ class BookListItem extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                   ],
+                ),
+              ),
+              Expanded(
+                child: IconButton(
+                  icon: Icon(
+                    book.isFavorite ? Icons.favorite : Icons.favorite_border,
+                    color: book.isFavorite ? Colors.red : null,
+                  ),
+                  onPressed: onFavoriteToggle,
                 ),
               ),
             ],

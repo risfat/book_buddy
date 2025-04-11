@@ -20,18 +20,24 @@ mixin _$BookEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(int page) getBooks,
     required TResult Function() loadMoreBooks,
+    required TResult Function(Book book) toggleFavorite,
+    required TResult Function() getFavorites,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int page)? getBooks,
     TResult? Function()? loadMoreBooks,
+    TResult? Function(Book book)? toggleFavorite,
+    TResult? Function()? getFavorites,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int page)? getBooks,
     TResult Function()? loadMoreBooks,
+    TResult Function(Book book)? toggleFavorite,
+    TResult Function()? getFavorites,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +45,24 @@ mixin _$BookEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetBooksEvent value) getBooks,
     required TResult Function(_LoadMoreBooksEvent value) loadMoreBooks,
+    required TResult Function(_ToggleFavoriteEvent value) toggleFavorite,
+    required TResult Function(_GetFavoritesEvent value) getFavorites,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetBooksEvent value)? getBooks,
     TResult? Function(_LoadMoreBooksEvent value)? loadMoreBooks,
+    TResult? Function(_ToggleFavoriteEvent value)? toggleFavorite,
+    TResult? Function(_GetFavoritesEvent value)? getFavorites,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetBooksEvent value)? getBooks,
     TResult Function(_LoadMoreBooksEvent value)? loadMoreBooks,
+    TResult Function(_ToggleFavoriteEvent value)? toggleFavorite,
+    TResult Function(_GetFavoritesEvent value)? getFavorites,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -146,6 +158,8 @@ class _$GetBooksEventImpl implements _GetBooksEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(int page) getBooks,
     required TResult Function() loadMoreBooks,
+    required TResult Function(Book book) toggleFavorite,
+    required TResult Function() getFavorites,
   }) {
     return getBooks(page);
   }
@@ -155,6 +169,8 @@ class _$GetBooksEventImpl implements _GetBooksEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int page)? getBooks,
     TResult? Function()? loadMoreBooks,
+    TResult? Function(Book book)? toggleFavorite,
+    TResult? Function()? getFavorites,
   }) {
     return getBooks?.call(page);
   }
@@ -164,6 +180,8 @@ class _$GetBooksEventImpl implements _GetBooksEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int page)? getBooks,
     TResult Function()? loadMoreBooks,
+    TResult Function(Book book)? toggleFavorite,
+    TResult Function()? getFavorites,
     required TResult orElse(),
   }) {
     if (getBooks != null) {
@@ -177,6 +195,8 @@ class _$GetBooksEventImpl implements _GetBooksEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetBooksEvent value) getBooks,
     required TResult Function(_LoadMoreBooksEvent value) loadMoreBooks,
+    required TResult Function(_ToggleFavoriteEvent value) toggleFavorite,
+    required TResult Function(_GetFavoritesEvent value) getFavorites,
   }) {
     return getBooks(this);
   }
@@ -186,6 +206,8 @@ class _$GetBooksEventImpl implements _GetBooksEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetBooksEvent value)? getBooks,
     TResult? Function(_LoadMoreBooksEvent value)? loadMoreBooks,
+    TResult? Function(_ToggleFavoriteEvent value)? toggleFavorite,
+    TResult? Function(_GetFavoritesEvent value)? getFavorites,
   }) {
     return getBooks?.call(this);
   }
@@ -195,6 +217,8 @@ class _$GetBooksEventImpl implements _GetBooksEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetBooksEvent value)? getBooks,
     TResult Function(_LoadMoreBooksEvent value)? loadMoreBooks,
+    TResult Function(_ToggleFavoriteEvent value)? toggleFavorite,
+    TResult Function(_GetFavoritesEvent value)? getFavorites,
     required TResult orElse(),
   }) {
     if (getBooks != null) {
@@ -259,6 +283,8 @@ class _$LoadMoreBooksEventImpl implements _LoadMoreBooksEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(int page) getBooks,
     required TResult Function() loadMoreBooks,
+    required TResult Function(Book book) toggleFavorite,
+    required TResult Function() getFavorites,
   }) {
     return loadMoreBooks();
   }
@@ -268,6 +294,8 @@ class _$LoadMoreBooksEventImpl implements _LoadMoreBooksEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int page)? getBooks,
     TResult? Function()? loadMoreBooks,
+    TResult? Function(Book book)? toggleFavorite,
+    TResult? Function()? getFavorites,
   }) {
     return loadMoreBooks?.call();
   }
@@ -277,6 +305,8 @@ class _$LoadMoreBooksEventImpl implements _LoadMoreBooksEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int page)? getBooks,
     TResult Function()? loadMoreBooks,
+    TResult Function(Book book)? toggleFavorite,
+    TResult Function()? getFavorites,
     required TResult orElse(),
   }) {
     if (loadMoreBooks != null) {
@@ -290,6 +320,8 @@ class _$LoadMoreBooksEventImpl implements _LoadMoreBooksEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetBooksEvent value) getBooks,
     required TResult Function(_LoadMoreBooksEvent value) loadMoreBooks,
+    required TResult Function(_ToggleFavoriteEvent value) toggleFavorite,
+    required TResult Function(_GetFavoritesEvent value) getFavorites,
   }) {
     return loadMoreBooks(this);
   }
@@ -299,6 +331,8 @@ class _$LoadMoreBooksEventImpl implements _LoadMoreBooksEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetBooksEvent value)? getBooks,
     TResult? Function(_LoadMoreBooksEvent value)? loadMoreBooks,
+    TResult? Function(_ToggleFavoriteEvent value)? toggleFavorite,
+    TResult? Function(_GetFavoritesEvent value)? getFavorites,
   }) {
     return loadMoreBooks?.call(this);
   }
@@ -308,6 +342,8 @@ class _$LoadMoreBooksEventImpl implements _LoadMoreBooksEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetBooksEvent value)? getBooks,
     TResult Function(_LoadMoreBooksEvent value)? loadMoreBooks,
+    TResult Function(_ToggleFavoriteEvent value)? toggleFavorite,
+    TResult Function(_GetFavoritesEvent value)? getFavorites,
     required TResult orElse(),
   }) {
     if (loadMoreBooks != null) {
@@ -322,12 +358,284 @@ abstract class _LoadMoreBooksEvent implements BookEvent {
 }
 
 /// @nodoc
+abstract class _$$ToggleFavoriteEventImplCopyWith<$Res> {
+  factory _$$ToggleFavoriteEventImplCopyWith(_$ToggleFavoriteEventImpl value,
+          $Res Function(_$ToggleFavoriteEventImpl) then) =
+      __$$ToggleFavoriteEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Book book});
+}
+
+/// @nodoc
+class __$$ToggleFavoriteEventImplCopyWithImpl<$Res>
+    extends _$BookEventCopyWithImpl<$Res, _$ToggleFavoriteEventImpl>
+    implements _$$ToggleFavoriteEventImplCopyWith<$Res> {
+  __$$ToggleFavoriteEventImplCopyWithImpl(_$ToggleFavoriteEventImpl _value,
+      $Res Function(_$ToggleFavoriteEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of BookEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? book = null,
+  }) {
+    return _then(_$ToggleFavoriteEventImpl(
+      null == book
+          ? _value.book
+          : book // ignore: cast_nullable_to_non_nullable
+              as Book,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ToggleFavoriteEventImpl implements _ToggleFavoriteEvent {
+  const _$ToggleFavoriteEventImpl(this.book);
+
+  @override
+  final Book book;
+
+  @override
+  String toString() {
+    return 'BookEvent.toggleFavorite(book: $book)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ToggleFavoriteEventImpl &&
+            (identical(other.book, book) || other.book == book));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, book);
+
+  /// Create a copy of BookEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ToggleFavoriteEventImplCopyWith<_$ToggleFavoriteEventImpl> get copyWith =>
+      __$$ToggleFavoriteEventImplCopyWithImpl<_$ToggleFavoriteEventImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int page) getBooks,
+    required TResult Function() loadMoreBooks,
+    required TResult Function(Book book) toggleFavorite,
+    required TResult Function() getFavorites,
+  }) {
+    return toggleFavorite(book);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int page)? getBooks,
+    TResult? Function()? loadMoreBooks,
+    TResult? Function(Book book)? toggleFavorite,
+    TResult? Function()? getFavorites,
+  }) {
+    return toggleFavorite?.call(book);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int page)? getBooks,
+    TResult Function()? loadMoreBooks,
+    TResult Function(Book book)? toggleFavorite,
+    TResult Function()? getFavorites,
+    required TResult orElse(),
+  }) {
+    if (toggleFavorite != null) {
+      return toggleFavorite(book);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetBooksEvent value) getBooks,
+    required TResult Function(_LoadMoreBooksEvent value) loadMoreBooks,
+    required TResult Function(_ToggleFavoriteEvent value) toggleFavorite,
+    required TResult Function(_GetFavoritesEvent value) getFavorites,
+  }) {
+    return toggleFavorite(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetBooksEvent value)? getBooks,
+    TResult? Function(_LoadMoreBooksEvent value)? loadMoreBooks,
+    TResult? Function(_ToggleFavoriteEvent value)? toggleFavorite,
+    TResult? Function(_GetFavoritesEvent value)? getFavorites,
+  }) {
+    return toggleFavorite?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetBooksEvent value)? getBooks,
+    TResult Function(_LoadMoreBooksEvent value)? loadMoreBooks,
+    TResult Function(_ToggleFavoriteEvent value)? toggleFavorite,
+    TResult Function(_GetFavoritesEvent value)? getFavorites,
+    required TResult orElse(),
+  }) {
+    if (toggleFavorite != null) {
+      return toggleFavorite(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ToggleFavoriteEvent implements BookEvent {
+  const factory _ToggleFavoriteEvent(final Book book) =
+      _$ToggleFavoriteEventImpl;
+
+  Book get book;
+
+  /// Create a copy of BookEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ToggleFavoriteEventImplCopyWith<_$ToggleFavoriteEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetFavoritesEventImplCopyWith<$Res> {
+  factory _$$GetFavoritesEventImplCopyWith(_$GetFavoritesEventImpl value,
+          $Res Function(_$GetFavoritesEventImpl) then) =
+      __$$GetFavoritesEventImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetFavoritesEventImplCopyWithImpl<$Res>
+    extends _$BookEventCopyWithImpl<$Res, _$GetFavoritesEventImpl>
+    implements _$$GetFavoritesEventImplCopyWith<$Res> {
+  __$$GetFavoritesEventImplCopyWithImpl(_$GetFavoritesEventImpl _value,
+      $Res Function(_$GetFavoritesEventImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of BookEvent
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$GetFavoritesEventImpl implements _GetFavoritesEvent {
+  const _$GetFavoritesEventImpl();
+
+  @override
+  String toString() {
+    return 'BookEvent.getFavorites()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GetFavoritesEventImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int page) getBooks,
+    required TResult Function() loadMoreBooks,
+    required TResult Function(Book book) toggleFavorite,
+    required TResult Function() getFavorites,
+  }) {
+    return getFavorites();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int page)? getBooks,
+    TResult? Function()? loadMoreBooks,
+    TResult? Function(Book book)? toggleFavorite,
+    TResult? Function()? getFavorites,
+  }) {
+    return getFavorites?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int page)? getBooks,
+    TResult Function()? loadMoreBooks,
+    TResult Function(Book book)? toggleFavorite,
+    TResult Function()? getFavorites,
+    required TResult orElse(),
+  }) {
+    if (getFavorites != null) {
+      return getFavorites();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetBooksEvent value) getBooks,
+    required TResult Function(_LoadMoreBooksEvent value) loadMoreBooks,
+    required TResult Function(_ToggleFavoriteEvent value) toggleFavorite,
+    required TResult Function(_GetFavoritesEvent value) getFavorites,
+  }) {
+    return getFavorites(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetBooksEvent value)? getBooks,
+    TResult? Function(_LoadMoreBooksEvent value)? loadMoreBooks,
+    TResult? Function(_ToggleFavoriteEvent value)? toggleFavorite,
+    TResult? Function(_GetFavoritesEvent value)? getFavorites,
+  }) {
+    return getFavorites?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetBooksEvent value)? getBooks,
+    TResult Function(_LoadMoreBooksEvent value)? loadMoreBooks,
+    TResult Function(_ToggleFavoriteEvent value)? toggleFavorite,
+    TResult Function(_GetFavoritesEvent value)? getFavorites,
+    required TResult orElse(),
+  }) {
+    if (getFavorites != null) {
+      return getFavorites(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetFavoritesEvent implements BookEvent {
+  const factory _GetFavoritesEvent() = _$GetFavoritesEventImpl;
+}
+
+/// @nodoc
 mixin _$BookState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Book> books, bool hasReachedMax) loaded,
+    required TResult Function(List<Book> books, bool hasReachedMax) booksLoaded,
+    required TResult Function(List<Book> books) favoriteBooksLoaded,
     required TResult Function(String message) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -335,7 +643,8 @@ mixin _$BookState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Book> books, bool hasReachedMax)? loaded,
+    TResult? Function(List<Book> books, bool hasReachedMax)? booksLoaded,
+    TResult? Function(List<Book> books)? favoriteBooksLoaded,
     TResult? Function(String message)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -343,7 +652,8 @@ mixin _$BookState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Book> books, bool hasReachedMax)? loaded,
+    TResult Function(List<Book> books, bool hasReachedMax)? booksLoaded,
+    TResult Function(List<Book> books)? favoriteBooksLoaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) =>
@@ -352,7 +662,8 @@ mixin _$BookState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_BooksLoaded value) booksLoaded,
+    required TResult Function(_FavoriteBooksLoaded value) favoriteBooksLoaded,
     required TResult Function(_Error value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -360,7 +671,8 @@ mixin _$BookState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_BooksLoaded value)? booksLoaded,
+    TResult? Function(_FavoriteBooksLoaded value)? favoriteBooksLoaded,
     TResult? Function(_Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -368,7 +680,8 @@ mixin _$BookState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
+    TResult Function(_BooksLoaded value)? booksLoaded,
+    TResult Function(_FavoriteBooksLoaded value)? favoriteBooksLoaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) =>
@@ -438,7 +751,8 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Book> books, bool hasReachedMax) loaded,
+    required TResult Function(List<Book> books, bool hasReachedMax) booksLoaded,
+    required TResult Function(List<Book> books) favoriteBooksLoaded,
     required TResult Function(String message) error,
   }) {
     return initial();
@@ -449,7 +763,8 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Book> books, bool hasReachedMax)? loaded,
+    TResult? Function(List<Book> books, bool hasReachedMax)? booksLoaded,
+    TResult? Function(List<Book> books)? favoriteBooksLoaded,
     TResult? Function(String message)? error,
   }) {
     return initial?.call();
@@ -460,7 +775,8 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Book> books, bool hasReachedMax)? loaded,
+    TResult Function(List<Book> books, bool hasReachedMax)? booksLoaded,
+    TResult Function(List<Book> books)? favoriteBooksLoaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -475,7 +791,8 @@ class _$InitialImpl implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_BooksLoaded value) booksLoaded,
+    required TResult Function(_FavoriteBooksLoaded value) favoriteBooksLoaded,
     required TResult Function(_Error value) error,
   }) {
     return initial(this);
@@ -486,7 +803,8 @@ class _$InitialImpl implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_BooksLoaded value)? booksLoaded,
+    TResult? Function(_FavoriteBooksLoaded value)? favoriteBooksLoaded,
     TResult? Function(_Error value)? error,
   }) {
     return initial?.call(this);
@@ -497,7 +815,8 @@ class _$InitialImpl implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
+    TResult Function(_BooksLoaded value)? booksLoaded,
+    TResult Function(_FavoriteBooksLoaded value)? favoriteBooksLoaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -555,7 +874,8 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Book> books, bool hasReachedMax) loaded,
+    required TResult Function(List<Book> books, bool hasReachedMax) booksLoaded,
+    required TResult Function(List<Book> books) favoriteBooksLoaded,
     required TResult Function(String message) error,
   }) {
     return loading();
@@ -566,7 +886,8 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Book> books, bool hasReachedMax)? loaded,
+    TResult? Function(List<Book> books, bool hasReachedMax)? booksLoaded,
+    TResult? Function(List<Book> books)? favoriteBooksLoaded,
     TResult? Function(String message)? error,
   }) {
     return loading?.call();
@@ -577,7 +898,8 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Book> books, bool hasReachedMax)? loaded,
+    TResult Function(List<Book> books, bool hasReachedMax)? booksLoaded,
+    TResult Function(List<Book> books)? favoriteBooksLoaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -592,7 +914,8 @@ class _$LoadingImpl implements _Loading {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_BooksLoaded value) booksLoaded,
+    required TResult Function(_FavoriteBooksLoaded value) favoriteBooksLoaded,
     required TResult Function(_Error value) error,
   }) {
     return loading(this);
@@ -603,7 +926,8 @@ class _$LoadingImpl implements _Loading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_BooksLoaded value)? booksLoaded,
+    TResult? Function(_FavoriteBooksLoaded value)? favoriteBooksLoaded,
     TResult? Function(_Error value)? error,
   }) {
     return loading?.call(this);
@@ -614,7 +938,8 @@ class _$LoadingImpl implements _Loading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
+    TResult Function(_BooksLoaded value)? booksLoaded,
+    TResult Function(_FavoriteBooksLoaded value)? favoriteBooksLoaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
@@ -630,20 +955,20 @@ abstract class _Loading implements BookState {
 }
 
 /// @nodoc
-abstract class _$$LoadedImplCopyWith<$Res> {
-  factory _$$LoadedImplCopyWith(
-          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
-      __$$LoadedImplCopyWithImpl<$Res>;
+abstract class _$$BooksLoadedImplCopyWith<$Res> {
+  factory _$$BooksLoadedImplCopyWith(
+          _$BooksLoadedImpl value, $Res Function(_$BooksLoadedImpl) then) =
+      __$$BooksLoadedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<Book> books, bool hasReachedMax});
 }
 
 /// @nodoc
-class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$BookStateCopyWithImpl<$Res, _$LoadedImpl>
-    implements _$$LoadedImplCopyWith<$Res> {
-  __$$LoadedImplCopyWithImpl(
-      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
+class __$$BooksLoadedImplCopyWithImpl<$Res>
+    extends _$BookStateCopyWithImpl<$Res, _$BooksLoadedImpl>
+    implements _$$BooksLoadedImplCopyWith<$Res> {
+  __$$BooksLoadedImplCopyWithImpl(
+      _$BooksLoadedImpl _value, $Res Function(_$BooksLoadedImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of BookState
@@ -654,7 +979,7 @@ class __$$LoadedImplCopyWithImpl<$Res>
     Object? books = null,
     Object? hasReachedMax = null,
   }) {
-    return _then(_$LoadedImpl(
+    return _then(_$BooksLoadedImpl(
       books: null == books
           ? _value._books
           : books // ignore: cast_nullable_to_non_nullable
@@ -669,8 +994,8 @@ class __$$LoadedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl(
+class _$BooksLoadedImpl implements _BooksLoaded {
+  const _$BooksLoadedImpl(
       {required final List<Book> books, required this.hasReachedMax})
       : _books = books;
 
@@ -687,14 +1012,14 @@ class _$LoadedImpl implements _Loaded {
 
   @override
   String toString() {
-    return 'BookState.loaded(books: $books, hasReachedMax: $hasReachedMax)';
+    return 'BookState.booksLoaded(books: $books, hasReachedMax: $hasReachedMax)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LoadedImpl &&
+            other is _$BooksLoadedImpl &&
             const DeepCollectionEquality().equals(other._books, _books) &&
             (identical(other.hasReachedMax, hasReachedMax) ||
                 other.hasReachedMax == hasReachedMax));
@@ -709,18 +1034,19 @@ class _$LoadedImpl implements _Loaded {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
-      __$$LoadedImplCopyWithImpl<_$LoadedImpl>(this, _$identity);
+  _$$BooksLoadedImplCopyWith<_$BooksLoadedImpl> get copyWith =>
+      __$$BooksLoadedImplCopyWithImpl<_$BooksLoadedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Book> books, bool hasReachedMax) loaded,
+    required TResult Function(List<Book> books, bool hasReachedMax) booksLoaded,
+    required TResult Function(List<Book> books) favoriteBooksLoaded,
     required TResult Function(String message) error,
   }) {
-    return loaded(books, hasReachedMax);
+    return booksLoaded(books, hasReachedMax);
   }
 
   @override
@@ -728,10 +1054,11 @@ class _$LoadedImpl implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Book> books, bool hasReachedMax)? loaded,
+    TResult? Function(List<Book> books, bool hasReachedMax)? booksLoaded,
+    TResult? Function(List<Book> books)? favoriteBooksLoaded,
     TResult? Function(String message)? error,
   }) {
-    return loaded?.call(books, hasReachedMax);
+    return booksLoaded?.call(books, hasReachedMax);
   }
 
   @override
@@ -739,12 +1066,13 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Book> books, bool hasReachedMax)? loaded,
+    TResult Function(List<Book> books, bool hasReachedMax)? booksLoaded,
+    TResult Function(List<Book> books)? favoriteBooksLoaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
-    if (loaded != null) {
-      return loaded(books, hasReachedMax);
+    if (booksLoaded != null) {
+      return booksLoaded(books, hasReachedMax);
     }
     return orElse();
   }
@@ -754,10 +1082,11 @@ class _$LoadedImpl implements _Loaded {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_BooksLoaded value) booksLoaded,
+    required TResult Function(_FavoriteBooksLoaded value) favoriteBooksLoaded,
     required TResult Function(_Error value) error,
   }) {
-    return loaded(this);
+    return booksLoaded(this);
   }
 
   @override
@@ -765,10 +1094,11 @@ class _$LoadedImpl implements _Loaded {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_BooksLoaded value)? booksLoaded,
+    TResult? Function(_FavoriteBooksLoaded value)? favoriteBooksLoaded,
     TResult? Function(_Error value)? error,
   }) {
-    return loaded?.call(this);
+    return booksLoaded?.call(this);
   }
 
   @override
@@ -776,21 +1106,22 @@ class _$LoadedImpl implements _Loaded {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
+    TResult Function(_BooksLoaded value)? booksLoaded,
+    TResult Function(_FavoriteBooksLoaded value)? favoriteBooksLoaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {
-    if (loaded != null) {
-      return loaded(this);
+    if (booksLoaded != null) {
+      return booksLoaded(this);
     }
     return orElse();
   }
 }
 
-abstract class _Loaded implements BookState {
-  const factory _Loaded(
+abstract class _BooksLoaded implements BookState {
+  const factory _BooksLoaded(
       {required final List<Book> books,
-      required final bool hasReachedMax}) = _$LoadedImpl;
+      required final bool hasReachedMax}) = _$BooksLoadedImpl;
 
   List<Book> get books;
   bool get hasReachedMax;
@@ -798,7 +1129,174 @@ abstract class _Loaded implements BookState {
   /// Create a copy of BookState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
+  _$$BooksLoadedImplCopyWith<_$BooksLoadedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FavoriteBooksLoadedImplCopyWith<$Res> {
+  factory _$$FavoriteBooksLoadedImplCopyWith(_$FavoriteBooksLoadedImpl value,
+          $Res Function(_$FavoriteBooksLoadedImpl) then) =
+      __$$FavoriteBooksLoadedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<Book> books});
+}
+
+/// @nodoc
+class __$$FavoriteBooksLoadedImplCopyWithImpl<$Res>
+    extends _$BookStateCopyWithImpl<$Res, _$FavoriteBooksLoadedImpl>
+    implements _$$FavoriteBooksLoadedImplCopyWith<$Res> {
+  __$$FavoriteBooksLoadedImplCopyWithImpl(_$FavoriteBooksLoadedImpl _value,
+      $Res Function(_$FavoriteBooksLoadedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of BookState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? books = null,
+  }) {
+    return _then(_$FavoriteBooksLoadedImpl(
+      books: null == books
+          ? _value._books
+          : books // ignore: cast_nullable_to_non_nullable
+              as List<Book>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FavoriteBooksLoadedImpl implements _FavoriteBooksLoaded {
+  const _$FavoriteBooksLoadedImpl({required final List<Book> books})
+      : _books = books;
+
+  final List<Book> _books;
+  @override
+  List<Book> get books {
+    if (_books is EqualUnmodifiableListView) return _books;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_books);
+  }
+
+  @override
+  String toString() {
+    return 'BookState.favoriteBooksLoaded(books: $books)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FavoriteBooksLoadedImpl &&
+            const DeepCollectionEquality().equals(other._books, _books));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_books));
+
+  /// Create a copy of BookState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FavoriteBooksLoadedImplCopyWith<_$FavoriteBooksLoadedImpl> get copyWith =>
+      __$$FavoriteBooksLoadedImplCopyWithImpl<_$FavoriteBooksLoadedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<Book> books, bool hasReachedMax) booksLoaded,
+    required TResult Function(List<Book> books) favoriteBooksLoaded,
+    required TResult Function(String message) error,
+  }) {
+    return favoriteBooksLoaded(books);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<Book> books, bool hasReachedMax)? booksLoaded,
+    TResult? Function(List<Book> books)? favoriteBooksLoaded,
+    TResult? Function(String message)? error,
+  }) {
+    return favoriteBooksLoaded?.call(books);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<Book> books, bool hasReachedMax)? booksLoaded,
+    TResult Function(List<Book> books)? favoriteBooksLoaded,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (favoriteBooksLoaded != null) {
+      return favoriteBooksLoaded(books);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_BooksLoaded value) booksLoaded,
+    required TResult Function(_FavoriteBooksLoaded value) favoriteBooksLoaded,
+    required TResult Function(_Error value) error,
+  }) {
+    return favoriteBooksLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_BooksLoaded value)? booksLoaded,
+    TResult? Function(_FavoriteBooksLoaded value)? favoriteBooksLoaded,
+    TResult? Function(_Error value)? error,
+  }) {
+    return favoriteBooksLoaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_BooksLoaded value)? booksLoaded,
+    TResult Function(_FavoriteBooksLoaded value)? favoriteBooksLoaded,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (favoriteBooksLoaded != null) {
+      return favoriteBooksLoaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FavoriteBooksLoaded implements BookState {
+  const factory _FavoriteBooksLoaded({required final List<Book> books}) =
+      _$FavoriteBooksLoadedImpl;
+
+  List<Book> get books;
+
+  /// Create a copy of BookState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$FavoriteBooksLoadedImplCopyWith<_$FavoriteBooksLoadedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -872,7 +1370,8 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Book> books, bool hasReachedMax) loaded,
+    required TResult Function(List<Book> books, bool hasReachedMax) booksLoaded,
+    required TResult Function(List<Book> books) favoriteBooksLoaded,
     required TResult Function(String message) error,
   }) {
     return error(message);
@@ -883,7 +1382,8 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<Book> books, bool hasReachedMax)? loaded,
+    TResult? Function(List<Book> books, bool hasReachedMax)? booksLoaded,
+    TResult? Function(List<Book> books)? favoriteBooksLoaded,
     TResult? Function(String message)? error,
   }) {
     return error?.call(message);
@@ -894,7 +1394,8 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Book> books, bool hasReachedMax)? loaded,
+    TResult Function(List<Book> books, bool hasReachedMax)? booksLoaded,
+    TResult Function(List<Book> books)? favoriteBooksLoaded,
     TResult Function(String message)? error,
     required TResult orElse(),
   }) {
@@ -909,7 +1410,8 @@ class _$ErrorImpl implements _Error {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_BooksLoaded value) booksLoaded,
+    required TResult Function(_FavoriteBooksLoaded value) favoriteBooksLoaded,
     required TResult Function(_Error value) error,
   }) {
     return error(this);
@@ -920,7 +1422,8 @@ class _$ErrorImpl implements _Error {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_BooksLoaded value)? booksLoaded,
+    TResult? Function(_FavoriteBooksLoaded value)? favoriteBooksLoaded,
     TResult? Function(_Error value)? error,
   }) {
     return error?.call(this);
@@ -931,7 +1434,8 @@ class _$ErrorImpl implements _Error {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
+    TResult Function(_BooksLoaded value)? booksLoaded,
+    TResult Function(_FavoriteBooksLoaded value)? favoriteBooksLoaded,
     TResult Function(_Error value)? error,
     required TResult orElse(),
   }) {

@@ -10,6 +10,7 @@ class Book {
   final List<String> categories;
   final double averageRating;
   final int ratingsCount;
+  final bool isFavorite;
 
   Book({
     required this.id,
@@ -23,5 +24,37 @@ class Book {
     required this.categories,
     required this.averageRating,
     required this.ratingsCount,
+    this.isFavorite = false,
   });
+
+  // Copy with method
+  Book copyWith({
+    String? id,
+    String? title,
+    List<String>? authors,
+    String? coverImageUrl,
+    String? description,
+    String? firstPublishYear,
+    String? publisher,
+    int? pageCount,
+    List<String>? categories,
+    double? averageRating,
+    int? ratingsCount,
+    bool? isFavorite,
+  }) {
+    return Book(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      authors: authors ?? this.authors,
+      coverImageUrl: coverImageUrl ?? this.coverImageUrl,
+      description: description ?? this.description,
+      firstPublishYear: firstPublishYear ?? this.firstPublishYear,
+      publisher: publisher ?? this.publisher,
+      pageCount: pageCount ?? this.pageCount,
+      categories: categories ?? this.categories,
+      averageRating: averageRating ?? this.averageRating,
+      ratingsCount: ratingsCount ?? this.ratingsCount,
+      isFavorite: isFavorite ?? this.isFavorite,
+    );
+  }
 }
