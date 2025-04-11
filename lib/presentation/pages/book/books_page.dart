@@ -106,14 +106,17 @@ class _BooksPageState extends State<BooksPage> {
       baseColor: Colors.grey[300]!,
       highlightColor: Colors.grey[100]!,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+        padding: const EdgeInsets.all(8.0),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               width: 80,
               height: 120,
-              color: Colors.white,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8),
+              ),
             ),
             const SizedBox(width: 16),
             Expanded(
@@ -138,10 +141,23 @@ class _BooksPageState extends State<BooksPage> {
                     color: Colors.white,
                   ),
                   const SizedBox(height: 8),
-                  Container(
-                    width: 80,
-                    height: 16,
-                    color: Colors.white,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        width: 80,
+                        height: 16,
+                        color: Colors.white,
+                      ),
+                      Container(
+                        width: 24,
+                        height: 24,
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
