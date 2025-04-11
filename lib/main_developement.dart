@@ -5,7 +5,7 @@ void main() {
   FlavorConfig(
     flavor: Flavor.development,
     name: 'DEVELOPMENT',
-    apiBaseUrl: 'https://api.dev.example.com',
+    apiBaseUrl: 'https://www.googleapis.com',
   );
   app.main();
 }

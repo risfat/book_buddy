@@ -64,7 +64,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     .fade(duration: 500.ms),
                 SizedBox(height: 20),
                 Text(
-                  'Flutter Boilerplate',
+                  'Book Buddy',
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -74,11 +74,12 @@ class _SplashScreenState extends State<SplashScreen> {
                     begin: 0.2, end: 0, delay: 300.ms, duration: 500.ms),
                 SizedBox(height: 10),
                 Text(
-                  'Clean Architecture',
+                  'A sample app to manage your book collection',
                   style: TextStyle(
                     fontSize: 18,
                     color: Colors.white70,
                   ),
+                  textAlign: TextAlign.center,
                 ).animate().fadeIn(delay: 600.ms, duration: 500.ms).slideY(
                     begin: 0.2, end: 0, delay: 600.ms, duration: 500.ms),
               ],

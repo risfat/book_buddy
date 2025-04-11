@@ -1,8 +1,8 @@
-// ignore_for_file: constant_identifier_names
+import '../config/flavor_config.dart';
 
 class API {
-  static const BASE_URL = 'https://dummyjson.com';
+  static String get BASE_URL => FlavorConfig.instance.apiBaseUrl;
 
   // Books
-  static const BOOKS = '$BASE_URL/books';
+  static String get BOOKS => '$BASE_URL/books/v1/volumes';
 }

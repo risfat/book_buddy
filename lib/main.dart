@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc_concurrency/bloc_concurrency.dart' as bloc_concurrency;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'core/utilities/app_bloc_observer.dart';
@@ -21,6 +22,12 @@ void main() {
         WidgetsFlutterBinding.ensureInitialized();
         Bloc.transformer = bloc_concurrency.sequential();
         Bloc.observer = const AppBlocObserver();
+        // Load Environment variables
+        try {
+          await dotenv.load(fileName: ".env"); // Load environment variables
+        } catch (e) {
+          throw Exception('Error loading .env file: $e'); // Print error if any
+        }
         // Initialize Hive
         await Hive.initFlutter();
         di.initializeDependencies();

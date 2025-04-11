@@ -3,32 +3,36 @@ import '../../domain/entities/book.dart';
 class BookModel extends Book {
   BookModel({
     required super.id,
-    required super.firstName,
-    required super.lastName,
-    required super.email,
-    required super.age,
-    required super.gender,
+    required super.title,
+    required super.authors,
+    required super.coverImageUrl,
   });
 
-  factory BookModel.fromJson(Map<String, dynamic> json) {
+  factory BookModel.fromGoogleBooksJson(Map<String, dynamic> json) {
+    final volumeInfo = json['volumeInfo'] as Map<String, dynamic>? ?? {};
     return BookModel(
-      id: json['id'],
-      firstName: json['firstName'] ?? 'N/A',
-      lastName: json['lastName'] ?? 'N/A',
-      email: json['email'] ?? 'N/A',
-      age: json['age'] ?? 0,
-      gender: json['gender'] ?? 'Unknown',
+      id: json['id'] as String? ?? '',
+      title: volumeInfo['title'] as String? ?? 'Unknown Title',
+      authors: (volumeInfo['authors'] as List<dynamic>?)
+              ?.map((author) => author as String)
+              .toList() ??
+          ['Unknown Author'],
+      coverImageUrl: (volumeInfo['imageLinks']
+              as Map<String, dynamic>?)?['thumbnail'] as String? ??
+          '',
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'firstName': firstName,
-      'lastName': lastName,
-      'email': email,
-      'age': age,
-      'gender': gender,
+      'volumeInfo': {
+        'title': title,
+        'authors': authors,
+        'imageLinks': {
+          'thumbnail': coverImageUrl,
+        },
+      },
     };
   }
 }

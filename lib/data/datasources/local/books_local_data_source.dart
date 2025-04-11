@@ -24,7 +24,7 @@ class BookLocalDataSourceImpl implements BookLocalDataSource {
       try {
         final List<dynamic> jsonList = json.decode(jsonString);
         final allBooks = jsonList
-            .map<BookModel>((json) => BookModel.fromJson(json))
+            .map<BookModel>((json) => BookModel.fromGoogleBooksJson(json))
             .toList();
 
         // Apply pagination
@@ -52,7 +52,7 @@ class BookLocalDataSourceImpl implements BookLocalDataSource {
     if (existingJsonString != null) {
       final List<dynamic> existingJsonList = json.decode(existingJsonString);
       allBooks = existingJsonList
-          .map<BookModel>((json) => BookModel.fromJson(json))
+          .map<BookModel>((json) => BookModel.fromGoogleBooksJson(json))
           .toList();
     }
 
