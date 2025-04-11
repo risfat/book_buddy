@@ -11,6 +11,7 @@ import '../domain/usecases/add_favorites.dart';
 import '../domain/usecases/get_books.dart';
 import '../domain/usecases/get_favorites.dart';
 import '../domain/usecases/remove_favorites.dart';
+import '../domain/usecases/search_books.dart';
 import '../presentation/bloc/authenticator_watcher/authenticator_watcher_bloc.dart';
 import '../presentation/bloc/book/book_bloc.dart';
 import '../presentation/cubit/theme/theme_cubit.dart';
@@ -52,6 +53,7 @@ void setupSynchronousRegistrations() {
 
   // Use cases
   getIt.registerLazySingleton(() => GetBooks(getIt()));
+  getIt.registerLazySingleton(() => SearchBooks(getIt()));
   getIt.registerLazySingleton(() => GetFavorites(getIt()));
   getIt.registerLazySingleton(() => AddToFavorites(getIt()));
   getIt.registerLazySingleton(() => RemoveFavorites(getIt()));
@@ -61,6 +63,7 @@ void setupSynchronousRegistrations() {
   getIt.registerLazySingleton(() => ThemeCubit());
   getIt.registerLazySingleton(() => BookBloc(
       getBooks: getIt(),
+      searchBooks: getIt(),
       getFavorites: getIt(),
       addToFavorites: getIt(),
       removeFromFavorites: getIt()));

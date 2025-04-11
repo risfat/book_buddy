@@ -59,6 +59,16 @@ class BookRepositoryImpl implements BookRepository {
   }
 
   @override
+  Future<Either<Failure, List<Book>>> searchBooks(String query) async {
+    try {
+      final books = await remoteDataSource.searchBooks(query);
+      return Right(books);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message));
+    }
+  }
+
+  @override
   Future<Either<Failure, List<Book>>> getFavorites() async {
     try {
       final favorites = await localDataSource.getFavorites();

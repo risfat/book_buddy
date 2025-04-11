@@ -19,6 +19,7 @@ mixin _$BookEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int page) getBooks,
+    required TResult Function(String query) searchBooks,
     required TResult Function() loadMoreBooks,
     required TResult Function(Book book) toggleFavorite,
     required TResult Function() getFavorites,
@@ -27,6 +28,7 @@ mixin _$BookEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int page)? getBooks,
+    TResult? Function(String query)? searchBooks,
     TResult? Function()? loadMoreBooks,
     TResult? Function(Book book)? toggleFavorite,
     TResult? Function()? getFavorites,
@@ -35,6 +37,7 @@ mixin _$BookEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int page)? getBooks,
+    TResult Function(String query)? searchBooks,
     TResult Function()? loadMoreBooks,
     TResult Function(Book book)? toggleFavorite,
     TResult Function()? getFavorites,
@@ -44,6 +47,7 @@ mixin _$BookEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetBooksEvent value) getBooks,
+    required TResult Function(_SearchBooks value) searchBooks,
     required TResult Function(_LoadMoreBooksEvent value) loadMoreBooks,
     required TResult Function(_ToggleFavoriteEvent value) toggleFavorite,
     required TResult Function(_GetFavoritesEvent value) getFavorites,
@@ -52,6 +56,7 @@ mixin _$BookEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetBooksEvent value)? getBooks,
+    TResult? Function(_SearchBooks value)? searchBooks,
     TResult? Function(_LoadMoreBooksEvent value)? loadMoreBooks,
     TResult? Function(_ToggleFavoriteEvent value)? toggleFavorite,
     TResult? Function(_GetFavoritesEvent value)? getFavorites,
@@ -60,6 +65,7 @@ mixin _$BookEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetBooksEvent value)? getBooks,
+    TResult Function(_SearchBooks value)? searchBooks,
     TResult Function(_LoadMoreBooksEvent value)? loadMoreBooks,
     TResult Function(_ToggleFavoriteEvent value)? toggleFavorite,
     TResult Function(_GetFavoritesEvent value)? getFavorites,
@@ -157,6 +163,7 @@ class _$GetBooksEventImpl implements _GetBooksEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int page) getBooks,
+    required TResult Function(String query) searchBooks,
     required TResult Function() loadMoreBooks,
     required TResult Function(Book book) toggleFavorite,
     required TResult Function() getFavorites,
@@ -168,6 +175,7 @@ class _$GetBooksEventImpl implements _GetBooksEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int page)? getBooks,
+    TResult? Function(String query)? searchBooks,
     TResult? Function()? loadMoreBooks,
     TResult? Function(Book book)? toggleFavorite,
     TResult? Function()? getFavorites,
@@ -179,6 +187,7 @@ class _$GetBooksEventImpl implements _GetBooksEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int page)? getBooks,
+    TResult Function(String query)? searchBooks,
     TResult Function()? loadMoreBooks,
     TResult Function(Book book)? toggleFavorite,
     TResult Function()? getFavorites,
@@ -194,6 +203,7 @@ class _$GetBooksEventImpl implements _GetBooksEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetBooksEvent value) getBooks,
+    required TResult Function(_SearchBooks value) searchBooks,
     required TResult Function(_LoadMoreBooksEvent value) loadMoreBooks,
     required TResult Function(_ToggleFavoriteEvent value) toggleFavorite,
     required TResult Function(_GetFavoritesEvent value) getFavorites,
@@ -205,6 +215,7 @@ class _$GetBooksEventImpl implements _GetBooksEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetBooksEvent value)? getBooks,
+    TResult? Function(_SearchBooks value)? searchBooks,
     TResult? Function(_LoadMoreBooksEvent value)? loadMoreBooks,
     TResult? Function(_ToggleFavoriteEvent value)? toggleFavorite,
     TResult? Function(_GetFavoritesEvent value)? getFavorites,
@@ -216,6 +227,7 @@ class _$GetBooksEventImpl implements _GetBooksEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetBooksEvent value)? getBooks,
+    TResult Function(_SearchBooks value)? searchBooks,
     TResult Function(_LoadMoreBooksEvent value)? loadMoreBooks,
     TResult Function(_ToggleFavoriteEvent value)? toggleFavorite,
     TResult Function(_GetFavoritesEvent value)? getFavorites,
@@ -237,6 +249,164 @@ abstract class _GetBooksEvent implements BookEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetBooksEventImplCopyWith<_$GetBooksEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SearchBooksImplCopyWith<$Res> {
+  factory _$$SearchBooksImplCopyWith(
+          _$SearchBooksImpl value, $Res Function(_$SearchBooksImpl) then) =
+      __$$SearchBooksImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String query});
+}
+
+/// @nodoc
+class __$$SearchBooksImplCopyWithImpl<$Res>
+    extends _$BookEventCopyWithImpl<$Res, _$SearchBooksImpl>
+    implements _$$SearchBooksImplCopyWith<$Res> {
+  __$$SearchBooksImplCopyWithImpl(
+      _$SearchBooksImpl _value, $Res Function(_$SearchBooksImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of BookEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? query = null,
+  }) {
+    return _then(_$SearchBooksImpl(
+      null == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SearchBooksImpl implements _SearchBooks {
+  const _$SearchBooksImpl(this.query);
+
+  @override
+  final String query;
+
+  @override
+  String toString() {
+    return 'BookEvent.searchBooks(query: $query)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SearchBooksImpl &&
+            (identical(other.query, query) || other.query == query));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, query);
+
+  /// Create a copy of BookEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SearchBooksImplCopyWith<_$SearchBooksImpl> get copyWith =>
+      __$$SearchBooksImplCopyWithImpl<_$SearchBooksImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int page) getBooks,
+    required TResult Function(String query) searchBooks,
+    required TResult Function() loadMoreBooks,
+    required TResult Function(Book book) toggleFavorite,
+    required TResult Function() getFavorites,
+  }) {
+    return searchBooks(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int page)? getBooks,
+    TResult? Function(String query)? searchBooks,
+    TResult? Function()? loadMoreBooks,
+    TResult? Function(Book book)? toggleFavorite,
+    TResult? Function()? getFavorites,
+  }) {
+    return searchBooks?.call(query);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int page)? getBooks,
+    TResult Function(String query)? searchBooks,
+    TResult Function()? loadMoreBooks,
+    TResult Function(Book book)? toggleFavorite,
+    TResult Function()? getFavorites,
+    required TResult orElse(),
+  }) {
+    if (searchBooks != null) {
+      return searchBooks(query);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetBooksEvent value) getBooks,
+    required TResult Function(_SearchBooks value) searchBooks,
+    required TResult Function(_LoadMoreBooksEvent value) loadMoreBooks,
+    required TResult Function(_ToggleFavoriteEvent value) toggleFavorite,
+    required TResult Function(_GetFavoritesEvent value) getFavorites,
+  }) {
+    return searchBooks(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetBooksEvent value)? getBooks,
+    TResult? Function(_SearchBooks value)? searchBooks,
+    TResult? Function(_LoadMoreBooksEvent value)? loadMoreBooks,
+    TResult? Function(_ToggleFavoriteEvent value)? toggleFavorite,
+    TResult? Function(_GetFavoritesEvent value)? getFavorites,
+  }) {
+    return searchBooks?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetBooksEvent value)? getBooks,
+    TResult Function(_SearchBooks value)? searchBooks,
+    TResult Function(_LoadMoreBooksEvent value)? loadMoreBooks,
+    TResult Function(_ToggleFavoriteEvent value)? toggleFavorite,
+    TResult Function(_GetFavoritesEvent value)? getFavorites,
+    required TResult orElse(),
+  }) {
+    if (searchBooks != null) {
+      return searchBooks(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SearchBooks implements BookEvent {
+  const factory _SearchBooks(final String query) = _$SearchBooksImpl;
+
+  String get query;
+
+  /// Create a copy of BookEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SearchBooksImplCopyWith<_$SearchBooksImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -282,6 +452,7 @@ class _$LoadMoreBooksEventImpl implements _LoadMoreBooksEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int page) getBooks,
+    required TResult Function(String query) searchBooks,
     required TResult Function() loadMoreBooks,
     required TResult Function(Book book) toggleFavorite,
     required TResult Function() getFavorites,
@@ -293,6 +464,7 @@ class _$LoadMoreBooksEventImpl implements _LoadMoreBooksEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int page)? getBooks,
+    TResult? Function(String query)? searchBooks,
     TResult? Function()? loadMoreBooks,
     TResult? Function(Book book)? toggleFavorite,
     TResult? Function()? getFavorites,
@@ -304,6 +476,7 @@ class _$LoadMoreBooksEventImpl implements _LoadMoreBooksEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int page)? getBooks,
+    TResult Function(String query)? searchBooks,
     TResult Function()? loadMoreBooks,
     TResult Function(Book book)? toggleFavorite,
     TResult Function()? getFavorites,
@@ -319,6 +492,7 @@ class _$LoadMoreBooksEventImpl implements _LoadMoreBooksEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetBooksEvent value) getBooks,
+    required TResult Function(_SearchBooks value) searchBooks,
     required TResult Function(_LoadMoreBooksEvent value) loadMoreBooks,
     required TResult Function(_ToggleFavoriteEvent value) toggleFavorite,
     required TResult Function(_GetFavoritesEvent value) getFavorites,
@@ -330,6 +504,7 @@ class _$LoadMoreBooksEventImpl implements _LoadMoreBooksEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetBooksEvent value)? getBooks,
+    TResult? Function(_SearchBooks value)? searchBooks,
     TResult? Function(_LoadMoreBooksEvent value)? loadMoreBooks,
     TResult? Function(_ToggleFavoriteEvent value)? toggleFavorite,
     TResult? Function(_GetFavoritesEvent value)? getFavorites,
@@ -341,6 +516,7 @@ class _$LoadMoreBooksEventImpl implements _LoadMoreBooksEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetBooksEvent value)? getBooks,
+    TResult Function(_SearchBooks value)? searchBooks,
     TResult Function(_LoadMoreBooksEvent value)? loadMoreBooks,
     TResult Function(_ToggleFavoriteEvent value)? toggleFavorite,
     TResult Function(_GetFavoritesEvent value)? getFavorites,
@@ -427,6 +603,7 @@ class _$ToggleFavoriteEventImpl implements _ToggleFavoriteEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int page) getBooks,
+    required TResult Function(String query) searchBooks,
     required TResult Function() loadMoreBooks,
     required TResult Function(Book book) toggleFavorite,
     required TResult Function() getFavorites,
@@ -438,6 +615,7 @@ class _$ToggleFavoriteEventImpl implements _ToggleFavoriteEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int page)? getBooks,
+    TResult? Function(String query)? searchBooks,
     TResult? Function()? loadMoreBooks,
     TResult? Function(Book book)? toggleFavorite,
     TResult? Function()? getFavorites,
@@ -449,6 +627,7 @@ class _$ToggleFavoriteEventImpl implements _ToggleFavoriteEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int page)? getBooks,
+    TResult Function(String query)? searchBooks,
     TResult Function()? loadMoreBooks,
     TResult Function(Book book)? toggleFavorite,
     TResult Function()? getFavorites,
@@ -464,6 +643,7 @@ class _$ToggleFavoriteEventImpl implements _ToggleFavoriteEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetBooksEvent value) getBooks,
+    required TResult Function(_SearchBooks value) searchBooks,
     required TResult Function(_LoadMoreBooksEvent value) loadMoreBooks,
     required TResult Function(_ToggleFavoriteEvent value) toggleFavorite,
     required TResult Function(_GetFavoritesEvent value) getFavorites,
@@ -475,6 +655,7 @@ class _$ToggleFavoriteEventImpl implements _ToggleFavoriteEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetBooksEvent value)? getBooks,
+    TResult? Function(_SearchBooks value)? searchBooks,
     TResult? Function(_LoadMoreBooksEvent value)? loadMoreBooks,
     TResult? Function(_ToggleFavoriteEvent value)? toggleFavorite,
     TResult? Function(_GetFavoritesEvent value)? getFavorites,
@@ -486,6 +667,7 @@ class _$ToggleFavoriteEventImpl implements _ToggleFavoriteEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetBooksEvent value)? getBooks,
+    TResult Function(_SearchBooks value)? searchBooks,
     TResult Function(_LoadMoreBooksEvent value)? loadMoreBooks,
     TResult Function(_ToggleFavoriteEvent value)? toggleFavorite,
     TResult Function(_GetFavoritesEvent value)? getFavorites,
@@ -553,6 +735,7 @@ class _$GetFavoritesEventImpl implements _GetFavoritesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int page) getBooks,
+    required TResult Function(String query) searchBooks,
     required TResult Function() loadMoreBooks,
     required TResult Function(Book book) toggleFavorite,
     required TResult Function() getFavorites,
@@ -564,6 +747,7 @@ class _$GetFavoritesEventImpl implements _GetFavoritesEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int page)? getBooks,
+    TResult? Function(String query)? searchBooks,
     TResult? Function()? loadMoreBooks,
     TResult? Function(Book book)? toggleFavorite,
     TResult? Function()? getFavorites,
@@ -575,6 +759,7 @@ class _$GetFavoritesEventImpl implements _GetFavoritesEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int page)? getBooks,
+    TResult Function(String query)? searchBooks,
     TResult Function()? loadMoreBooks,
     TResult Function(Book book)? toggleFavorite,
     TResult Function()? getFavorites,
@@ -590,6 +775,7 @@ class _$GetFavoritesEventImpl implements _GetFavoritesEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetBooksEvent value) getBooks,
+    required TResult Function(_SearchBooks value) searchBooks,
     required TResult Function(_LoadMoreBooksEvent value) loadMoreBooks,
     required TResult Function(_ToggleFavoriteEvent value) toggleFavorite,
     required TResult Function(_GetFavoritesEvent value) getFavorites,
@@ -601,6 +787,7 @@ class _$GetFavoritesEventImpl implements _GetFavoritesEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetBooksEvent value)? getBooks,
+    TResult? Function(_SearchBooks value)? searchBooks,
     TResult? Function(_LoadMoreBooksEvent value)? loadMoreBooks,
     TResult? Function(_ToggleFavoriteEvent value)? toggleFavorite,
     TResult? Function(_GetFavoritesEvent value)? getFavorites,
@@ -612,6 +799,7 @@ class _$GetFavoritesEventImpl implements _GetFavoritesEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetBooksEvent value)? getBooks,
+    TResult Function(_SearchBooks value)? searchBooks,
     TResult Function(_LoadMoreBooksEvent value)? loadMoreBooks,
     TResult Function(_ToggleFavoriteEvent value)? toggleFavorite,
     TResult Function(_GetFavoritesEvent value)? getFavorites,

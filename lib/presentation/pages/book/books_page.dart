@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer/shimmer.dart';
 
+import '../../../core/utilities/debouncer.dart';
 import '../../../domain/entities/book.dart';
 import '../../bloc/book/book_bloc.dart';
 import '../../widgets/custom_error_widget.dart';
@@ -17,11 +18,21 @@ class BooksPage extends StatefulWidget {
 
 class _BooksPageState extends State<BooksPage> {
   int _selectedIndex = 0;
+  final TextEditingController _searchController = TextEditingController();
+  final Debouncer _debouncer = Debouncer(milliseconds: 1000);
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    _debouncer.cancel();
+    super.dispose();
+  }
 
   void _onItemTapped(int index) {
     if (_selectedIndex != index) {
       setState(() {
         _selectedIndex = index;
+        _searchController.clear();
       });
 
       context.read<BookBloc>().add(
@@ -30,6 +41,16 @@ class _BooksPageState extends State<BooksPage> {
                 : const BookEvent.getBooks(page: 1),
           );
     }
+  }
+
+  void _onSearchChanged(String query) {
+    _debouncer.run(() {
+      if (query.isEmpty) {
+        context.read<BookBloc>().add(const BookEvent.getBooks(page: 1));
+      } else {
+        context.read<BookBloc>().add(BookEvent.searchBooks(query));
+      }
+    });
   }
 
   @override
@@ -43,15 +64,61 @@ class _BooksPageState extends State<BooksPage> {
 
   AppBar _buildAppBar() {
     return AppBar(
-      title: Text(_selectedIndex == 0 ? 'Books' : 'Favorites'),
+      title: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 300),
+        transitionBuilder: (Widget child, Animation<double> animation) {
+          return FadeTransition(
+            opacity: animation,
+            child: SizeTransition(
+              sizeFactor: animation,
+              axis: Axis.horizontal,
+              child: child,
+            ),
+          );
+        },
+        child: _selectedIndex == 0
+            ? Container(
+                key: const ValueKey<String>('SearchField'),
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: TextField(
+                  controller: _searchController,
+                  decoration: InputDecoration(
+                    hintText: 'Search books...',
+                    border: InputBorder.none,
+                    prefixIcon: const Icon(Icons.search, color: Colors.grey),
+                    suffixIcon: _searchController.text.isNotEmpty
+                        ? IconButton(
+                            icon: const Icon(Icons.clear, color: Colors.grey),
+                            onPressed: () {
+                              _searchController.clear();
+                              _onSearchChanged('');
+                            },
+                          )
+                        : null,
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 12, horizontal: 16),
+                  ),
+                  onChanged: _onSearchChanged,
+                ),
+              )
+            : Text(
+                'Favorites',
+                key: const ValueKey<String>('FavoritesTitle'),
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+      ),
       actions: [
-        // Uncomment when search functionality is implemented
-        // IconButton(
-        //   icon: const Icon(Icons.search),
-        //   onPressed: () {
-        //     // TODO: Implement search functionality
-        //   },
-        // ),
+        if (_selectedIndex == 0)
+          IconButton(
+            icon: const Icon(Icons.clear),
+            onPressed: () {
+              _searchController.clear();
+              _onSearchChanged('');
+            },
+          ),
       ],
     );
   }

@@ -8,6 +8,7 @@ import '../../../domain/usecases/add_favorites.dart';
 import '../../../domain/usecases/get_books.dart';
 import '../../../domain/usecases/get_favorites.dart';
 import '../../../domain/usecases/remove_favorites.dart';
+import '../../../domain/usecases/search_books.dart';
 
 part 'book_bloc.freezed.dart';
 part 'book_event.dart';
@@ -15,6 +16,7 @@ part 'book_state.dart';
 
 class BookBloc extends Bloc<BookEvent, BookState> {
   final GetBooks _getBooks;
+  final SearchBooks _searchBooks;
   final GetFavorites _getFavorites;
   final AddToFavorites _addToFavorites;
   final RemoveFavorites _removeFromFavorites;
@@ -22,10 +24,12 @@ class BookBloc extends Bloc<BookEvent, BookState> {
 
   BookBloc({
     required GetBooks getBooks,
+    required SearchBooks searchBooks,
     required GetFavorites getFavorites,
     required AddToFavorites addToFavorites,
     required RemoveFavorites removeFromFavorites,
   })  : _getBooks = getBooks,
+        _searchBooks = searchBooks,
         _getFavorites = getFavorites,
         _addToFavorites = addToFavorites,
         _removeFromFavorites = removeFromFavorites,
@@ -34,6 +38,7 @@ class BookBloc extends Bloc<BookEvent, BookState> {
     on<_LoadMoreBooksEvent>(_onLoadMoreBooks);
     on<_ToggleFavoriteEvent>(_onToggleFavorites);
     on<_GetFavoritesEvent>(_onGetFavorites);
+    on<_SearchBooks>(_onSearchBooks);
   }
 
   Future<void> _onGetBooks(
@@ -71,6 +76,20 @@ class BookBloc extends Bloc<BookEvent, BookState> {
         hasReachedMax: newBooks.length < _booksPerPage,
       ),
     ));
+  }
+
+  void _onSearchBooks(_SearchBooks event, Emitter<BookState> emit) async {
+    emit(const BookState.loading());
+
+    final result = await _searchBooks(event.query);
+    result.fold(
+      (failure) => emit(BookState.error(message: failure.message)),
+      (books) => emit(BookState.booksLoaded(
+        books: books,
+        hasReachedMax: true, // Since we're not paginating search results
+        isFavorite: false,
+      )),
+    );
   }
 
   Future<void> _onToggleFavorites(

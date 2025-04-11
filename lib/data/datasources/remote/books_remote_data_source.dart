@@ -8,6 +8,7 @@ import '../../models/book_model.dart';
 
 abstract class BookRemoteDataSource {
   Future<List<BookModel>> getBooks(int page, int limit);
+  Future<List<BookModel>> searchBooks(String query);
 }
 
 class BookRemoteDataSourceImpl implements BookRemoteDataSource {
@@ -38,6 +39,34 @@ class BookRemoteDataSourceImpl implements BookRemoteDataSource {
       } else {
         throw ServerException(
             "Failed to fetch books: ${response.statusCode} - ${response.data}");
+      }
+    } on DioException catch (e) {
+      throw ServerException(e.toString());
+    }
+  }
+
+  @override
+  Future<List<BookModel>> searchBooks(String query) async {
+    try {
+      final response = await dio.get(
+        API.BOOKS,
+        queryParameters: {
+          'q': query,
+          'maxResults': 40,
+          'key': dotenv.env['GOOGLE_BOOKS_API_KEY'],
+        },
+        options: Options(headers: {'Content-Type': 'application/json'}),
+      );
+
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> responseData = response.data;
+        final List<dynamic> bookList = responseData['items'] ?? [];
+        return bookList
+            .map((json) => BookModel.fromGoogleBooksJson(json))
+            .toList();
+      } else {
+        throw ServerException(
+            "Failed to search books: ${response.statusCode} - ${response.data}");
       }
     } on DioException catch (e) {
       throw ServerException(e.toString());
