@@ -77,10 +77,9 @@ class _BooksPageState extends State<BooksPage> {
         return state.when(
           initial: () => _handleInitialState(),
           loading: _buildShimmerLoading,
-          booksLoaded: (books, hasReachedMax) =>
-              _buildBookList(books, hasReachedMax),
-          favoriteBooksLoaded: (books) =>
-              _buildBookList(books, true, pullToRefresh: false),
+          booksLoaded: (books, hasReachedMax, isFavoritePage) => _buildBookList(
+              books, hasReachedMax,
+              isFavoritePage: isFavoritePage),
           error: (message) => CustomErrorWidget(errorMessage: message),
         );
       },
@@ -171,11 +170,20 @@ class _BooksPageState extends State<BooksPage> {
   Widget _buildBookList(
     List<Book> books,
     bool hasReachedMax, {
-    bool pullToRefresh = true,
+    bool isFavoritePage = false,
   }) {
+    if (books.isEmpty) {
+      return Center(
+        child: Text(
+          isFavoritePage ? 'No favorite books found' : 'No books found',
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
+      );
+    }
+
     return RefreshIndicator(
       onRefresh: () async {
-        if (pullToRefresh) {
+        if (!isFavoritePage) {
           context.read<BookBloc>().add(const BookEvent.getBooks(page: 1));
         }
       },

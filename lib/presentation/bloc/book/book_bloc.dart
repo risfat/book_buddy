@@ -102,7 +102,8 @@ class BookBloc extends Bloc<BookEvent, BookState> {
 
     emit(failureOrFavorites.fold(
       (failure) => BookState.error(message: failure.message),
-      (favorites) => BookState.favoriteBooksLoaded(books: favorites),
+      (favorites) => BookState.booksLoaded(
+          books: favorites, hasReachedMax: true, isFavorite: true),
     ));
   }
 }
