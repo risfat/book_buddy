@@ -7,7 +7,7 @@ A Book Discovery and Management Application
 
 <br/> <div style="text-align: center;"><img src="demo/app_demo.png" width="200" alt="Demo"></div>
 
-[Download App Demo APK](https://drive.google.com/file/d/1KlVwnF8C6AsKhkpeV0E0Z5WibswwBtc1/view?usp=sharing)
+[Download App Demo APK](https://drive.google.com/file/d/1EwGYxHfWpLnIL0mt_WBS0GWjrVwJIDda/view?usp=sharing)
 
 ## Features
 
